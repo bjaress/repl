@@ -4,4 +4,7 @@ RUN apk add --no-cache git
 RUN go install github.com/x-motemen/gore/cmd/gore@latest
 RUN go install github.com/mdempsky/gocode@latest   # for code completion
 
-ENTRYPOINT ["gore"]
+RUN adduser -S repl
+USER repl
+
+CMD ["gore"]

@@ -1,5 +1,7 @@
-FROM docker.io/clojure:lein AS clojure-repl
+FROM docker.io/clojure:lein
 
-RUN mkdir -p /root/.lein/
+RUN adduser --system --home /repl repl
+USER repl
+RUN mkdir /repl/.lein # fails without this
 
 CMD ["lein", "repl"]
